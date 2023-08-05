@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"github.com/MadeByShedrack/controllers"
+	"github.com/MadeByShedrack/database"
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
-	fmt.Println("Hello world")
+	movieRouter := gin.Default()
+
+	database.ConnectDatabase()
+
+	movieRouter.GET("/movies", controllers.FindBooks)
+
+	movieRouter.Run()
 }
